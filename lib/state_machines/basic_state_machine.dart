@@ -28,18 +28,18 @@ Failed to get transaction for [${getStateName(_currentState)}], event->$event"""
     }
     _currentState = transaction.state();
 
-    if (event.getData() == null || event.getData() is! ISink) {
-      if (event.getData() == null) {
-        print('dispatch - 1-1');
-      }
-      else
-      if (event.getData() is! ISink) {
-        print('dispatch - 1-2');
-      }
-    }
-    else {
-      print ('dispatch - 2');
-    }
+    // if (event.getData() == null || event.getData() is! ISink) {
+    //   if (event.getData() == null) {
+    //     print('dispatch - 1-1');
+    //   }
+    //   else
+    //   if (event.getData() is! ISink) {
+    //     print('dispatch - 1-2');
+    //   }
+    // }
+    // else {
+    //   print ('dispatch - 2');
+    // }
 
     transaction.method()?.execute(event.getData());
         // (event.getData() == null || event.getData() is! ISink)
