@@ -5,14 +5,14 @@ import 'dart:ui';
 class AsyncProcessSimulator {
   Timer? _timer;
   final Duration _duration;
+  final int min = 0;
+  final int max = 100;
   final _random = Random();
 
   AsyncProcessSimulator(this._duration);
 
   void start(VoidCallback? success, VoidCallback? failed) {
     _timer = Timer(_duration, () {
-      int min = 0;
-      int max = 100;
       int randomNumber = min + _random.nextInt(max - min + 1);
       if (randomNumber < 50) {
         failed?.call();
