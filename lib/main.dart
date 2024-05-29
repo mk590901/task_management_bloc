@@ -41,11 +41,16 @@ class MyHomePage extends StatelessWidget {
         child: BlocBuilder<TaskBloc, TaskState>(
           builder: (context, state) {
             if (state.state() == TaskStates.idle) {
-              return const Text('IDLE...');
+              return const Text('Press run button to start task',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.lightBlue, fontSize: 18),);
             } else if (state.state() == TaskStates.active) {
               return const CircularProgressIndicator();
             } else if (state.state() == TaskStates.error) {
-              return const Text('ERROR...');
+              return const Text('Task is failed. Press reset button\nto back initial state',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.redAccent, fontSize: 18),
+              );
             }
             return Container();
           },
@@ -95,7 +100,7 @@ class MyHomePage extends StatelessWidget {
             },
             tooltip: 'Reset',
             child: const Icon(Icons.refresh_sharp, size: 32, color: Colors.lightBlue),
-          ),
+           ),
         ],
       ),
     );
