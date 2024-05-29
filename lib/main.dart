@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'async_process_simulator.dart';
 import 'blocks/task_bloc.dart';
 import 'events/task_events.dart';
 import 'states/task_state.dart';
@@ -17,14 +18,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: BlocProvider(
         create: (_) => TaskBloc(TaskState(TaskStates.idle)),
-        child: const MyHomePage(),
+        child: MyHomePage(),
       ),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  MyHomePage({super.key});
+
+  final simulator = AsyncProcessSimulator(const Duration(seconds: 5));
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +56,13 @@ class MyHomePage extends StatelessWidget {
         children: [
           FloatingActionButton(
             onPressed: () {
-              taskBloc.add(Run(/*taskBloc*/() { taskBloc.add(Success()); } ));
+              taskBloc.add(Run(() {
+                simulator.start(() {
+                  taskBloc.add(Success());
+                }, () {
+                  taskBloc.add(Failed());
+                });
+              }));
             },
             tooltip: 'Fetch Data',
             child: const Icon(Icons.download),
@@ -61,7 +70,9 @@ class MyHomePage extends StatelessWidget {
           const SizedBox(width: 10),
           FloatingActionButton(
             onPressed: () {
-              taskBloc.add(Cancel());
+              simulator.stop(() {
+                taskBloc.add(Cancel());
+              });
             },
             tooltip: 'Cancel',
             child: const Icon(Icons.cancel),
@@ -70,7 +81,9 @@ class MyHomePage extends StatelessWidget {
           const SizedBox(width: 10),
           FloatingActionButton(
             onPressed: () {
-              taskBloc.add(Failed());
+              simulator.stop(() {
+                taskBloc.add(Failed());
+              });
             },
             tooltip: 'Failed',
             child: const Icon(Icons.error_outline_sharp),
@@ -80,7 +93,7 @@ class MyHomePage extends StatelessWidget {
             onPressed: () {
               taskBloc.add(Reset());
             },
-            tooltip: 'Refresh',
+            tooltip: 'Reset',
             child: const Icon(Icons.refresh_sharp),
           ),
         ],
