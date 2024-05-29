@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:task_management/blocks/task_bloc.dart';
 import 'package:task_management/state_machines/basic_state_machine.dart';
 
@@ -12,6 +14,11 @@ class OnRun implements ITransitionMethod {
     if (variable is TaskBloc) {
       print("@OnRun -- parameter is TaskBloc");
     }
+    if (variable is VoidCallback?) {
+      print("@OnRun -- parameter is VoidCallback?");
+      variable?.call();
+    }
+
   }
 }
 
