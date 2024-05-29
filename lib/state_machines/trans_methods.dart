@@ -4,8 +4,8 @@ import 'dart:ui';
 // import 'package:task_management/state_machines/basic_state_machine.dart';
 
 import '../blocks/task_bloc.dart';
-import '../interfaces/i_transition_method.dart';
-import 'basic_state_machine.dart';
+import '../core/interfaces/i_transition_method.dart';
+import '../core/basic_state_machine.dart';
 
 class OnRun implements ITransitionMethod {
   BasicStateMachine? _stateMachine;

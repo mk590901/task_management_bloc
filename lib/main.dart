@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'async_process_simulator.dart';
 import 'blocks/task_bloc.dart';
-import 'events/task_events.dart';
-import 'states/task_state.dart';
+import 'blocks/task_state.dart';
+import 'blocks/task_events.dart';
 
 void main() {
   runApp(const MyApp());

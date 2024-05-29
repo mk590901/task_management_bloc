@@ -1,4 +1,4 @@
-import '../interfaces/i_transition_method.dart';
+import '../core/interfaces/i_transition_method.dart';
 
 class Transaction {
   final int _state;

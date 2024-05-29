@@ -1,5 +1,5 @@
-import '../events/event.dart';
-import '../interfaces/i_transition_method.dart';
+import '../core/event.dart';
+import '../core/interfaces/i_transition_method.dart';
 
 class Trans {
   final Event _event;

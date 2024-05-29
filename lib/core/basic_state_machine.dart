@@ -1,6 +1,5 @@
-import '../events/event.dart';
-import '../interfaces/i_sink.dart';
-import '../states/state.dart';
+import '../core/event.dart';
+import '../core/state.dart';
 import 'transaction.dart';
 
 abstract class BasicStateMachine {

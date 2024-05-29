@@ -1,4 +1,4 @@
-import '../events/event.dart';
+import '../core/event.dart';
 
 //  Button events
 class Reset<T> extends Event<T> {
