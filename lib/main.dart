@@ -7,11 +7,11 @@ import 'blocs/task_state.dart';
 import 'blocs/task_events.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AsyncOperationDemoApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AsyncOperationDemoApp extends StatelessWidget {
+  const AsyncOperationDemoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
