@@ -1,15 +1,11 @@
 import 'dart:ui';
 
-// import 'package:task_management/blocks/task_bloc.dart';
-// import 'package:task_management/state_machines/basic_state_machine.dart';
-
 import '../blocks/task_bloc.dart';
 import '../core/interfaces/i_transition_method.dart';
 import '../core/basic_state_machine.dart';
 
 class OnRun implements ITransitionMethod {
-  BasicStateMachine? _stateMachine;
-  OnRun(this._stateMachine);
+  OnRun();
   @override
   void execute([var variable]) {
     print("@OnRun $variable");
@@ -25,8 +21,7 @@ class OnRun implements ITransitionMethod {
 }
 
 class OnSuccess implements ITransitionMethod {
-  BasicStateMachine? _stateMachine;
-  OnSuccess(this._stateMachine);
+  OnSuccess();
   @override
   void execute([var hashMap]) {
     print("@OnSuccess $hashMap");
@@ -34,8 +29,7 @@ class OnSuccess implements ITransitionMethod {
 }
 
 class OnCancel implements ITransitionMethod {
-  BasicStateMachine? _stateMachine;
-  OnCancel(this._stateMachine);
+  OnCancel();
   @override
   void execute([var hashMap]) {
     print("@OnCancel $hashMap");
@@ -43,8 +37,7 @@ class OnCancel implements ITransitionMethod {
 }
 
 class OnFailed implements ITransitionMethod {
-  BasicStateMachine? _stateMachine;
-  OnFailed(this._stateMachine);
+  OnFailed();
   @override
   void execute([var hashMap]) {
     print("@OnFailed $hashMap");
@@ -52,8 +45,7 @@ class OnFailed implements ITransitionMethod {
 }
 
 class OnReset implements ITransitionMethod {
-  BasicStateMachine? _stateMachine;
-  OnReset(this._stateMachine);
+  OnReset();
   @override
   void execute([var hashMap]) {
     print("@OnReset $hashMap");

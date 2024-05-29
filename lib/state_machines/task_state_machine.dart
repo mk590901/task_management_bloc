@@ -1,4 +1,3 @@
-import 'dart:async';
 import '../core/basic_state_machine.dart';
 import '../core/state.dart';
 import '../core/trans.dart';
@@ -12,12 +11,12 @@ class TaskStateMachine extends BasicStateMachine {
 
   @override
   void create() {
-    states_ [TaskState.state_(TaskStates.idle)]   = State([ Trans(Run(),      TaskState.state_(TaskStates.active),  OnRun     (this))]);
-    states_ [TaskState.state_(TaskStates.active)] = State([ Trans(Success(),  TaskState.state_(TaskStates.idle),    OnSuccess (this)),
-                                                            Trans(Cancel(),   TaskState.state_(TaskStates.idle),    OnCancel  (this)),
-                                                            Trans(Failed(),   TaskState.state_(TaskStates.error),   OnFailed  (this)),
+    states_ [TaskState.state_(TaskStates.idle)]   = State([ Trans(Run(),      TaskState.state_(TaskStates.active),  OnRun     ())]);
+    states_ [TaskState.state_(TaskStates.active)] = State([ Trans(Success(),  TaskState.state_(TaskStates.idle),    OnSuccess ()),
+                                                            Trans(Cancel(),   TaskState.state_(TaskStates.idle),    OnCancel  ()),
+                                                            Trans(Failed(),   TaskState.state_(TaskStates.error),   OnFailed  ()),
                                                           ]);
-    states_ [TaskState.state_(TaskStates.error)]  = State([ Trans(Reset(),    TaskState.state_(TaskStates.idle),    OnReset (this))]);
+    states_ [TaskState.state_(TaskStates.error)]  = State([ Trans(Reset(),    TaskState.state_(TaskStates.idle),    OnReset   ())]);
 
   }
 
