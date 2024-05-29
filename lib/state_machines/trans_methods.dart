@@ -1,5 +1,5 @@
 import 'dart:ui';
-import '../blocks/task_bloc.dart';
+import '../blocs/task_bloc.dart';
 import '../core/interfaces/i_transition_method.dart';
 
 class OnRun implements ITransitionMethod {

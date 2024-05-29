@@ -1,10 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/event.dart';
-import 'task_events.dart';
+
 import '../core/basic_state_machine.dart';
 import '../state_machines/task_state_machine.dart';
-import '../blocks/task_state.dart';
+import '../blocs/task_state.dart';
+import 'task_events.dart';
 
 class TaskBloc extends Bloc<Event, TaskState> {
   BasicStateMachine? _stateMachine;

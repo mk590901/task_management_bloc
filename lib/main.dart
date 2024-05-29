@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'async_process_simulator.dart';
-import 'blocks/task_bloc.dart';
-import 'blocks/task_state.dart';
-import 'blocks/task_events.dart';
+import 'blocs/task_bloc.dart';
+import 'blocs/task_state.dart';
+import 'blocs/task_events.dart';
 
 void main() {
   runApp(const MyApp());
@@ -64,8 +64,8 @@ class MyHomePage extends StatelessWidget {
                 });
               }));
             },
-            tooltip: 'Fetch Data',
-            child: const Icon(Icons.download),
+            tooltip: 'Start process',
+            child: const Icon(Icons.run_circle_outlined, size: 32, color: Colors.lightBlue),
           ),
           const SizedBox(width: 10),
           FloatingActionButton(
@@ -75,7 +75,7 @@ class MyHomePage extends StatelessWidget {
               });
             },
             tooltip: 'Cancel',
-            child: const Icon(Icons.cancel),
+            child: const Icon(Icons.cancel_outlined, size: 32, color: Colors.lightBlue),
           ),
 
           const SizedBox(width: 10),
@@ -86,7 +86,7 @@ class MyHomePage extends StatelessWidget {
               });
             },
             tooltip: 'Failed',
-            child: const Icon(Icons.error_outline_sharp),
+            child: const Icon(Icons.error_outline_sharp, size: 32, color: Colors.lightBlue),
           ),
           const SizedBox(width: 10),
           FloatingActionButton(
@@ -94,7 +94,7 @@ class MyHomePage extends StatelessWidget {
               taskBloc.add(Reset());
             },
             tooltip: 'Reset',
-            child: const Icon(Icons.refresh_sharp),
+            child: const Icon(Icons.refresh_sharp, size: 32, color: Colors.lightBlue),
           ),
         ],
       ),

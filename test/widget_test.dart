@@ -6,10 +6,10 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:task_management/blocks/task_events.dart';
+import 'package:task_management/blocs/task_events.dart';
+import 'package:task_management/blocs/task_state.dart';
 import 'package:task_management/core/basic_state_machine.dart';
 import 'package:task_management/state_machines/task_state_machine.dart';
-import 'package:task_management/blocks/task_state.dart';
 
 void main() {
   test('TaskStateMachine', () {

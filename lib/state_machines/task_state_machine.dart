@@ -2,8 +2,8 @@ import '../core/basic_state_machine.dart';
 import '../core/state.dart';
 import '../core/trans.dart';
 import '../core/event.dart';
-import '../blocks/task_state.dart';
-import '../blocks/task_events.dart';
+import '../blocs/task_state.dart';
+import '../blocs/task_events.dart';
 import 'trans_methods.dart';
 
 class TaskStateMachine extends BasicStateMachine {
