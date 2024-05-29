@@ -1,3 +1,4 @@
+import 'package:task_management/blocks/task_bloc.dart';
 import 'package:task_management/state_machines/basic_state_machine.dart';
 
 import '../interfaces/i_transition_method.dart';
@@ -6,8 +7,11 @@ class OnRun implements ITransitionMethod {
   BasicStateMachine? _stateMachine;
   OnRun(this._stateMachine);
   @override
-  void execute([var hashMap]) {
-    print("@OnRun $hashMap");
+  void execute([var variable]) {
+    print("@OnRun $variable");
+    if (variable is TaskBloc) {
+      print("@OnRun -- parameter is TaskBloc");
+    }
   }
 }
 

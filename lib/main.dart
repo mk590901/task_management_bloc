@@ -53,7 +53,7 @@ class MyHomePage extends StatelessWidget {
         children: [
           FloatingActionButton(
             onPressed: () {
-              taskBloc.add(Run());
+              taskBloc.add(Run(taskBloc));
             },
             tooltip: 'Fetch Data',
             child: const Icon(Icons.download),
