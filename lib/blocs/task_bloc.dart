@@ -1,7 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../core/event.dart';
-
 import '../core/basic_state_machine.dart';
 import '../state_machines/task_state_machine.dart';
 import '../blocs/task_state.dart';
@@ -10,8 +8,8 @@ import 'task_events.dart';
 class TaskBloc extends Bloc<Event, TaskState> {
   BasicStateMachine? _stateMachine;
 
-  TaskBloc(super.state) {
-    _stateMachine = TaskStateMachine(TaskState.state_(TaskStates.idle));
+  TaskBloc(TaskState initialState) : super(initialState) {
+    _stateMachine = TaskStateMachine(initialState.state().index);
     on<Reset>((event, emit) {
       done(event, emit);
     });
