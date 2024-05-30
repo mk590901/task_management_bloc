@@ -6,7 +6,7 @@ Managing asynchronous task in the Flutter app, via BLoC pattern. This is an inte
 
 The task is divided into two parts:
 1) Simulator of the task's process: instance of the __AsyncProcessSimulator__ class controlled by two commands: __start__ and __stop__. The __start__ method starts an internal timer, which completes its execution after a specified time, producing the result success or failed through two callback functions. The method __stop__ interrupts the process if necessary, removing the timer and signaling completion through the appropriate callback.
-2) Class __TaskBloc__, mapped to the state machine __TaskStateMachine__ (diagram below), that controls the above-described simulator using four events: __Run__, __Success__, __Failed__, __Cancel__ and __Reset__. 
+2) Class __TaskBloc__, mapped to the state machine __TaskStateMachine__ (diagram below), that controls the above-described simulator using five events: __Run__, __Success__, __Failed__, __Cancel__ and __Reset__. 
 
 ## State machine 
 
