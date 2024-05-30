@@ -21,14 +21,14 @@ class AsyncOperationDemoApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (_) => TaskBloc(TaskState(TaskStates.idle)),
-        child: MyHomePage(),
+        child: TaskHomePage(),
       ),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+class TaskHomePage extends StatelessWidget {
+  TaskHomePage({super.key});
 
   final simulator = AsyncProcessSimulator(const Duration(seconds: 5));
 
