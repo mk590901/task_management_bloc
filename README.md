@@ -1,12 +1,11 @@
 # Async Task Management
 
-A new Flutter project.
+Managing asynchronous task in the Flutter app, via BLoC pattern. This is an intermediate project in which a component has been created can be used in the next applications.
 
-## Getting Started
+## Introduction
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
+The task is divided into two parts:
+1) Simulator of the task's process: instance of the __AsyncProcessSimulator__ class controlled by two commands: __start__ and __stop__. The __start__ method starts an internal timer, which completes its execution after a specified time, producing the result success or failed through two callback functions. The method __stop__ interrupts the process if necessary, removing the timer and signaling completion through the appropriate callback.
 
 ## State machine 
 
