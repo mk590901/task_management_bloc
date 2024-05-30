@@ -11,3 +11,9 @@ A few resources to get you started if this is your first Flutter project:
 ## State machine 
 
 ![async_task](https://github.com/mk590901/task_management_bloc/assets/125393245/f301926f-4bb8-491e-a053-9d601ae87dc6)
+
+## Movie
+
+https://github.com/mk590901/task_management_bloc/assets/125393245/4bdaaca9-8b3e-4543-9224-41f3b79dedd2
+
+
