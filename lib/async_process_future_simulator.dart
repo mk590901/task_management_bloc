@@ -8,9 +8,10 @@ import 'core/interfaces/i_async_process.dart';
 
 class AsyncFutureProcessSimulator implements IAsyncProcess {
 
-  CancelableOperation? _downloadOperation; // Create a CancelableOperation variable to manage cancellation.
-  bool _isDownloading = false;
-  bool _downloadCompleted = false;
+  CancelableOperation? _action; // Create a CancelableOperation variable to manage cancellation.
+
+  bool _isActive = false;
+  bool _actionCompleted = false;
 
   final Duration _duration;
   final int min = 0;
@@ -22,27 +23,17 @@ class AsyncFutureProcessSimulator implements IAsyncProcess {
   @override
   void start(VoidCallback? success, VoidCallback? failed) {
 
-    _isDownloading = true;
-    _downloadCompleted = false;
+    _isActive = true;
+    _actionCompleted = false;
 
-    _downloadFile(success, failed);
-
-    // _timer = Timer(_duration, () {
-    //   int randomNumber = min + _random.nextInt(max - min + 1);
-    //   if (randomNumber < 50) {
-    //     failed?.call();
-    //   }
-    //   else {
-    //     success?.call();
-    //   }
-    // });
-
+    _process(success, failed);
+    
   }
 
-  Future<void> _downloadFile(VoidCallback? success, VoidCallback? failed) async {
+  Future<void> _process(VoidCallback? success, VoidCallback? failed) async {
     try {
       // Simulate a time-consuming download operation.
-      _downloadOperation = CancelableOperation.fromFuture(
+      _action = CancelableOperation.fromFuture(
         Future.delayed(_duration),
       ).then((_) {
         // Handle completion
@@ -55,30 +46,28 @@ class AsyncFutureProcessSimulator implements IAsyncProcess {
           else {
             success?.call();
           }
-
-
-
       });
 
-      if (!_downloadOperation!.isCanceled) {
-        _downloadCompleted = true;
+      if (!_action!.isCanceled) {
+        _actionCompleted = true;
         debugPrint("******* Completed *******");
       }
     } catch (exception) {
-      // Handle errors
+      // Handle exception
       debugPrint("******* exception *******");
-
+      failed?.call();
     } finally {
-      _isDownloading = false;
+      _isActive = false;
       debugPrint("******* finally *******");
     }
   }
 
   @override
   void stop(VoidCallback? cancel) {
-    if (_downloadOperation != null && !_downloadOperation!.isCanceled) {
-      _downloadOperation!.cancel(); // Cancel the download operation if it's running.
-      _isDownloading = false;
+    if (_action != null && !_action!.isCanceled) {
+      _action!.cancel(); // Cancel the process if it's running.
+      _isActive = false;
+      debugPrint("******* cancel *******");
       cancel?.call();
     }
   }
