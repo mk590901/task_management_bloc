@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:math';
-import 'dart:ui';
 import 'package:async/async.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'core/interfaces/i_async_process.dart';
 
 class AsyncFutureProcessSimulator implements IAsyncProcess {
