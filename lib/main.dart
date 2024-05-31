@@ -45,7 +45,6 @@ class TaskHomePage extends StatelessWidget {
     final taskBloc = BlocProvider.of<TaskBloc>(context);
 
     FlatRoundedSwitch roundedSwitch = FlatRoundedSwitch(
-        //canvasColor: Colors.blueAccent,
         iconColor: Colors.blueGrey.shade100,
         borderWidth: 0.2,
         width: 12,
