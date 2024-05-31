@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_management/core/interfaces/i_async_process.dart';
+import 'async_process_future_simulator.dart';
 import 'async_process_timer_simulator.dart';
 import 'blocs/task_bloc.dart';
 import 'blocs/task_state.dart';
@@ -31,7 +32,8 @@ class AsyncOperationDemoApp extends StatelessWidget {
 class TaskHomePage extends StatelessWidget {
   TaskHomePage({super.key});
 
-  final IAsyncProcess simulator = AsyncProcessSimulator(const Duration(seconds: 5));
+  //final IAsyncProcess simulator = AsyncTimerProcessSimulator(const Duration(seconds: 5));
+  final IAsyncProcess simulator = AsyncFutureProcessSimulator(const Duration(seconds: 5));
 
   @override
   Widget build(BuildContext context) {

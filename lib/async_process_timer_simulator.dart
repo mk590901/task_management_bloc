@@ -3,14 +3,14 @@ import 'dart:math';
 import 'dart:ui';
 import 'core/interfaces/i_async_process.dart';
 
-class AsyncProcessSimulator implements IAsyncProcess {
+class AsyncTimerProcessSimulator implements IAsyncProcess {
   Timer? _timer;
   final Duration _duration;
   final int min = 0;
   final int max = 100;
   final _random = Random();
 
-  AsyncProcessSimulator(this._duration);
+  AsyncTimerProcessSimulator(this._duration);
 
   @override
   void start(VoidCallback? success, VoidCallback? failed) {
