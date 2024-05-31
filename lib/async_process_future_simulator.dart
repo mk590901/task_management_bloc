@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'core/interfaces/i_async_process.dart';
 
 class AsyncFutureProcessSimulator implements IAsyncProcess {
-
-  CancelableOperation? _action; // Create a CancelableOperation variable to manage cancellation.
+  CancelableOperation?
+      _action; // Create a CancelableOperation variable to manage cancellation.
 
   bool _isActive = false;
   bool _actionCompleted = false;
@@ -20,12 +20,10 @@ class AsyncFutureProcessSimulator implements IAsyncProcess {
 
   @override
   void start(VoidCallback? success, VoidCallback? failed) {
-
     _isActive = true;
     _actionCompleted = false;
 
     _process(success, failed);
-    
   }
 
   Future<void> _process(VoidCallback? success, VoidCallback? failed) async {
@@ -37,13 +35,12 @@ class AsyncFutureProcessSimulator implements IAsyncProcess {
         // Handle completion
         debugPrint("******* Handle completion *******");
 
-          int randomNumber = min + _random.nextInt(max - min + 1);
-          if (randomNumber < 50) {
-            failed?.call();
-          }
-          else {
-            success?.call();
-          }
+        int randomNumber = min + _random.nextInt(max - min + 1);
+        if (randomNumber < 50) {
+          failed?.call();
+        } else {
+          success?.call();
+        }
       });
 
       if (!_action!.isCanceled) {
