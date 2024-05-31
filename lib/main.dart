@@ -6,6 +6,7 @@ import 'async_process_timer_simulator.dart';
 import 'blocs/task_bloc.dart';
 import 'blocs/task_state.dart';
 import 'blocs/task_events.dart';
+import 'ui/widgets/flat_rounded_switch.dart';
 
 void main() {
   runApp(const AsyncOperationDemoApp());
@@ -32,28 +33,60 @@ class AsyncOperationDemoApp extends StatelessWidget {
 class TaskHomePage extends StatelessWidget {
   TaskHomePage({super.key});
 
-  //final IAsyncProcess simulator = AsyncTimerProcessSimulator(const Duration(seconds: 5));
-  final IAsyncProcess simulator = AsyncFutureProcessSimulator(const Duration(seconds: 5));
+  bool simulatorType = false;
+
+  final IAsyncProcess timerSimulator = AsyncTimerProcessSimulator(const Duration(seconds: 5));
+  final IAsyncProcess futureSimulator = AsyncFutureProcessSimulator(const Duration(seconds: 5));
+
+  late IAsyncProcess? simulator = timerSimulator;
 
   @override
   Widget build(BuildContext context) {
     final taskBloc = BlocProvider.of<TaskBloc>(context);
 
+    FlatRoundedSwitch roundedSwitch = FlatRoundedSwitch(
+        //canvasColor: Colors.blueAccent,
+        iconColor: Colors.blueGrey.shade100,
+        borderWidth: 0.2,
+        width: 12,
+        height: 8,
+        borderColor: Colors.white,
+        T: Icons.settings_outlined,
+        F: Icons.access_time,
+        onAction: () {
+          simulatorType = !simulatorType;
+          print ("simulatorType->$simulatorType");
+          if (simulatorType) {
+            print ("FUTURE Simulator");
+            simulator = futureSimulator;
+          }
+          else {
+             print ("TIMER Simulator");
+             simulator = timerSimulator;
+          }
+        });
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Async Operation with BLoC', style: buildTitleTextStyle()),
         backgroundColor: Colors.lightBlue,
+          actions: [
+            roundedSwitch,
+            const SizedBox(width: 8,),
+          ],
       ),
       body: Center(
         child: BlocBuilder<TaskBloc, TaskState>(
           builder: (context, state) {
             if (state.state() == TaskStates.idle) {
+              roundedSwitch.enable();
               return Text(
                 'Press run button to start task',
                 textAlign: TextAlign.center,
                 style: buildTextStyle(),
               );
             } else if (state.state() == TaskStates.active) {
+              roundedSwitch.disable();
               return Stack(
                 alignment: Alignment.center,
                 children: [
@@ -92,7 +125,7 @@ class TaskHomePage extends StatelessWidget {
                 onPressed: isButtonInverseEnabled(state.state())
                     ? () {
                         taskBloc.add(Run(() {
-                          simulator.start(() {
+                          simulator?.start(() {
                             taskBloc.add(Success());
                           }, () {
                             taskBloc.add(Failed());
@@ -110,7 +143,7 @@ class TaskHomePage extends StatelessWidget {
               FloatingActionButton(
                 onPressed: isButtonInverseEnabled(state.state())
                     ? () {
-                        simulator.stop(() {
+                        simulator?.stop(() {
                           taskBloc.add(Cancel());
                         });
                       }
@@ -125,7 +158,7 @@ class TaskHomePage extends StatelessWidget {
               FloatingActionButton(
                 onPressed: isButtonInverseEnabled(state.state())
                     ? () {
-                        simulator.stop(() {
+                        simulator?.stop(() {
                           taskBloc.add(Failed());
                         });
                       }
