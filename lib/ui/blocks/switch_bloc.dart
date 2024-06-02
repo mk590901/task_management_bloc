@@ -8,8 +8,8 @@ import '../states/switch_state.dart';
 class SwitchBloc extends Bloc<Event, SwitchState> {
   BasicStateMachine? _stateMachine;
 
-  SwitchBloc(super.state) {
-    _stateMachine = SwitchStateMachine(SwitchState.state_(SwitchStates.off));
+  SwitchBloc(SwitchState initialState) : super(initialState) {
+    _stateMachine = SwitchStateMachine(initialState.state().index);
     on<Reset>((event, emit) {
       done(event, emit);
     });
