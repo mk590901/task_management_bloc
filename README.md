@@ -14,6 +14,8 @@ The task is divided into two parts:
 
 ## Movie
 
-https://github.com/mk590901/task_management_bloc/assets/125393245/4bdaaca9-8b3e-4543-9224-41f3b79dedd2
+https://github.com/mk590901/task_management_bloc/assets/125393245/1d05c65a-ca9b-43d7-8ea2-4fc535892f28
+
+
 
 
